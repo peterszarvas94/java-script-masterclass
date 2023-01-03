@@ -12,17 +12,22 @@ public class SpringIn10StepsApplication {
 	// Where to search for beans? @SpringBootApplication auto-scan the packages
 
 	public static void main(String[] args) {
-		// without Spring:
+
+		// * clear the console:
+		System.out.print("\033[H\033[2J");
+		// System.out.print("\033\143");
+
+		// * without Spring:
 		// BinarySearchImpl binarySearch = new BinarySearchImpl(new
 		// QuickSortAlgorithm());
 		// int result = binarySearch.binarySearch(new int[] { 12, 4, 6 }, 3);
 
-		// with Spring: Application Context:
+		// * with Spring: Application Context:
 		ApplicationContext applicationContext = SpringApplication.run(SpringIn10StepsApplication.class, args);
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
 		int result = binarySearch.binarySearch(new int[] { 12, 4, 6 }, 3);
 
-		System.out.println(result);
+		System.out.printf("[OUTPUT] result: %s%n", result);
 	}
 
 }
